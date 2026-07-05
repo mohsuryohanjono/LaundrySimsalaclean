@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simsalaclean – Laundry Express Jakarta Selatan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1B2A4A;--navy2:#243761;--gold:#D4AF37;--gold2:#F2C14E;--white:#fff;--gray:#F2F2F2;--muted:#6b7280;--dark:#111827}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--navy);background:var(--white);line-height:1.6}
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:66px;box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.nav-logo img{height:42px;object-fit:contain}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--gold2)}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;font-weight:700!important;padding:7px 18px;border-radius:6px}
+.nav-cta:hover{background:var(--gold2)!important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+#hero{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,#2d4a8a 100%);display:flex;align-items:center;padding:100px 6% 60px;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background:url('visualisasi interior.png') center/cover no-repeat;opacity:.1}
+.hero-wrap{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:48px;width:100%;max-width:1140px;margin:0 auto}
+.hero-text{flex:1;max-width:560px}
+.badge{display:inline-block;background:rgba(212,175,55,.15);border:1px solid var(--gold);color:var(--gold2);font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.hero-text h1{font-family:'Poppins',sans-serif;font-size:clamp(2rem,4.5vw,3.1rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:18px}
+.hero-text h1 span{color:var(--gold2)}
+.hero-text p{color:rgba(255,255,255,.72);font-size:1rem;margin-bottom:0;max-width:460px}
+.btn{display:inline-block;background:var(--gold);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;padding:14px 32px;border-radius:8px;text-decoration:none;transition:background .2s,transform .15s;box-shadow:0 4px 18px rgba(212,175,55,.4)}
+.btn:hover{background:var(--gold2);transform:translateY(-2px)}
+.hero-img{flex:1;max-width:440px}
+.hero-img img{width:100%;border-radius:16px;box-shadow:0 20px 56px rgba(0,0,0,.4)}
+.lead-form-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:28px 26px;margin-top:32px;max-width:420px}
+.form-heading{font-family:'Poppins',sans-serif;font-size:.75rem;font-weight:700;color:var(--gold2);letter-spacing:.09em;text-transform:uppercase;margin-bottom:5px}
+.form-desc{font-size:.87rem;color:rgba(255,255,255,.7);margin-bottom:16px;line-height:1.5}
+.form-desc strong{color:#fff}
+.lead-form-box input{width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:11px 14px;color:#fff;font-family:'Inter',sans-serif;font-size:.9rem;margin-bottom:10px;outline:none;transition:border .2s}
+.lead-form-box input::placeholder{color:rgba(255,255,255,.4)}
+.lead-form-box input:focus{border-color:var(--gold)}
+.btn-submit{width:100%;background:var(--gold);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;padding:13px;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .15s;box-shadow:0 4px 18px rgba(212,175,55,.35);margin-top:2px}
+.btn-submit:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:20px}
+.popup-overlay.show{display:flex}
+.popup-box{background:#fff;border-radius:20px;padding:40px 32px;max-width:400px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.3);animation:popIn .35s ease}
+@keyframes popIn{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+@keyframes glowPulse{0%{box-shadow:0 0 0 0 rgba(212,175,55,.7);border-color:var(--gold)}50%{box-shadow:0 0 0 10px rgba(212,175,55,0);border-color:var(--gold2)}100%{box-shadow:0 0 0 0 rgba(212,175,55,0);border-color:rgba(255,255,255,.18)}}
+.popup-icon{font-size:2.8rem;margin-bottom:14px}
+.popup-box h3{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:10px}
+.popup-box p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.popup-voucher{display:inline-block;background:var(--gray);border:2px dashed var(--gold);border-radius:10px;padding:14px 22px;margin:16px 0 18px;font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy)}
+.popup-voucher span{display:block;font-size:.72rem;font-weight:500;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.popup-note{font-size:.8rem!important;color:var(--muted)!important;margin-top:8px}
+.popup-close{margin-top:20px;background:var(--navy);color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;padding:11px 28px;border:none;border-radius:8px;cursor:pointer;transition:background .2s}
+.popup-close:hover{background:var(--navy2)}
+section{padding:80px 6%}
+.wrap{max-width:1140px;margin:0 auto}
+.label{display:inline-block;color:var(--gold);font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.title{font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;color:var(--navy);margin-bottom:12px}
+.sub{color:var(--muted);max-width:540px;margin-bottom:44px;font-size:.95rem}
+#layanan{background:var(--gray)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(0,0,0,.13)}
+.card img{width:100%;height:176px;object-fit:cover;display:block}
+.card-body{padding:20px}
+.card-body h3{font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.card-body p{font-size:.85rem;color:var(--muted);margin-bottom:14px;line-height:1.55}
+.price{display:inline-block;background:var(--navy);color:var(--gold2);font-family:'Poppins',sans-serif;font-weight:700;font-size:.82rem;padding:5px 13px;border-radius:20px}
+#keunggulan{background:#fff}
+.unggulan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px}
+.unggulan-item{background:var(--gray);border-radius:14px;padding:30px 24px;border-top:4px solid var(--gold);transition:box-shadow .2s}
+.unggulan-item:hover{box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.unggulan-item .icon{font-size:1.9rem;margin-bottom:14px}
+.unggulan-item h3{font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:7px}
+.unggulan-item p{font-size:.85rem;color:var(--muted);line-height:1.6}
+#cara-pesan{background:var(--navy)}
+#cara-pesan .label{color:var(--gold2)}
+#cara-pesan .title{color:#fff}
+#cara-pesan .sub{color:rgba(255,255,255,.55)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:22px}
+.step{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:30px 22px 26px;text-align:center}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;background:var(--gold);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:800;font-size:1rem;border-radius:50%;margin-bottom:14px}
+.step h3{font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:700;color:#fff;margin-bottom:7px}
+.step p{font-size:.83rem;color:rgba(255,255,255,.55);line-height:1.55}
+#faq{background:var(--gray)}
+.faq-list{max-width:740px;display:flex;flex-direction:column;gap:10px}
+.faq-item{background:#fff;border-radius:10px;border:1px solid #e5e7eb;overflow:hidden}
+.faq-q{width:100%;text-align:left;display:flex;justify-content:space-between;align-items:center;padding:17px 20px;background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif;font-size:.9rem;font-weight:600;color:var(--navy);gap:14px;transition:background .2s}
+.faq-q:hover{background:var(--gray)}
+.faq-ic{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;transition:background .2s,transform .3s}
+.faq-item.open .faq-ic{background:var(--gold);transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;padding:0 20px;font-size:.87rem;color:var(--muted);line-height:1.7}
+.faq-item.open .faq-a{max-height:300px;padding:0 20px 17px}
+#cta{background:linear-gradient(135deg,var(--navy) 0%,#2d4a8a 100%);padding:80px 6%;text-align:center}
+#cta h2{font-family:'Poppins',sans-serif;font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:800;color:#fff;margin-bottom:12px}
+#cta p{color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 32px;font-size:.95rem}
+footer{background:var(--dark);padding:48px 6% 24px}
+.footer-top{max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-brand img{height:38px;margin-bottom:12px}
+.footer-brand p{color:rgba(255,255,255,.45);font-size:.83rem;max-width:220px;line-height:1.6}
+.footer-col h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;color:#fff;margin-bottom:12px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.footer-col ul li a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.83rem;transition:color .2s}
+.footer-col ul li a:hover{color:var(--gold2)}
+.footer-bottom{max-width:1140px;margin:20px auto 0;text-align:center;color:rgba(255,255,255,.3);font-size:.78rem}
+@media(max-width:768px){
+  .burger{display:flex}
+  .nav-links{display:none;position:absolute;top:66px;left:0;right:0;background:var(--navy);flex-direction:column;padding:18px 6% 24px;gap:14px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  .nav-links.open{display:flex}
+  .hero-wrap{flex-direction:column;text-align:center}
+  .hero-text p{margin-left:auto;margin-right:auto}
+  .hero-img{display:none}
+  .lead-form-box{max-width:100%}
+  .footer-top{flex-direction:column}
+}
+@media(max-width:480px){.steps{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo"><img src="logo simsalaclean.png" alt="Simsalaclean" /></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#layanan">Layanan</a></li>
+    <li><a href="#keunggulan">Keunggulan</a></li>
+    <li><a href="#cara-pesan">Cara Pesan</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#hero" class="nav-cta">Berlangganan</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section id="hero">
+  <div class="hero-wrap">
+    <div class="hero-text">
+      <span class="badge">✦ Express Same-Day · Jakarta Selatan</span>
+      <h1>Kotor Hari Ini,<br/><span>Bersih Hari Ini Juga.</span></h1>
+      <p>Laundry express profesional untuk pakaian sehari-hari hingga pakaian khusus. Selesai di hari yang sama, dijemput dan diantar ke pintu Anda.</p>
+      <div class="lead-form-box">
+        <div class="form-heading">🎁 Penawaran Terbatas</div>
+        <div class="form-desc">Daftar sekarang dan dapatkan <strong>potongan Rp50.000</strong> untuk order pertama Anda!</div>
+        <form id="leadForm" novalidate>
+          <input type="text" id="fieldNama" placeholder="Nama Lengkap" autocomplete="name" required />
+          <input type="text" id="fieldIG" placeholder="Username Instagram (contoh: @simsalaclean)" required />
+          <button type="submit" class="btn-submit" id="submitBtn">Klaim Potongan Sekarang ✦</button>
+        </form>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="visualisasi interior.png" alt="Interior Simsalaclean" />
+    </div>
+  </div>
+</section>
+
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+  <div class="popup-box">
+    <div class="popup-icon">🎉</div>
+    <h3 id="popupTitle">Selamat, <span id="popupNama"></span>!</h3>
+    <p>Terima kasih telah berlangganan Simsalaclean.</p>
+    <div class="popup-voucher">
+      <span>Voucher kamu</span>
+      Potongan Rp50.000
+    </div>
+    <button class="popup-close" id="popupClose">Oke, Siap!</button>
+  </div>
+</div>
+
+<section id="layanan">
+  <div class="wrap">
+    <span class="label">Layanan Kami</span>
+    <h2 class="title">Semua Kebutuhan Laundry Anda</h2>
+    <p class="sub">Dari cucian harian hingga pakaian premium — kami tangani dengan standar profesional dan hasil yang terjamin.</p>
+    <div class="cards">
+      <div class="card"><img src="Cuci Kiloan.png" alt="Cuci Kiloan" /><div class="card-body"><h3>Cuci Kiloan</h3><p>Pakaian sehari-hari, cuci + setrika bersih dan rapi. Cocok untuk kebutuhan rutin.</p><span class="price">Mulai Rp 8.000/kg</span></div></div>
+      <div class="card"><img src="Express Sameday.png" alt="Express Same-Day" /><div class="card-body"><h3>Express Same-Day</h3><p>Semua jenis cucian selesai di hari yang sama. Ideal saat jadwal Anda tidak bisa menunggu.</p><span class="price">Mulai Rp 15.000/kg</span></div></div>
+      <div class="card"><img src="Dry Clean Pakaian Khusus.png" alt="Dry Clean Pakaian Khusus" /><div class="card-body"><h3>Dry Clean Pakaian Khusus</h3><p>Penanganan profesional untuk jas, blazer, gaun, batik, dan bahan sensitif lainnya.</p><span class="price">Mulai Rp 30.000/pcs</span></div></div>
+      <div class="card"><img src="Perawatan Khusus.png" alt="Perawatan Khusus" /><div class="card-body"><h3>Perawatan Khusus</h3><p>Perawatan menyeluruh untuk sepatu, bed cover, selimut, dan perlengkapan rumah tangga.</p><span class="price">Mulai Rp 25.000/pcs</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="keunggulan">
+  <div class="wrap">
+    <span class="label">Mengapa Simsalaclean</span>
+    <h2 class="title">Bukan Laundry Biasa</h2>
+    <p class="sub">Kecepatan express dikombinasikan dengan keahlian penanganan pakaian premium — standar yang tidak bisa Anda temukan di laundry kiloan biasa.</p>
+    <div class="unggulan-grid">
+      <div class="unggulan-item"><div class="icon">⚡</div><h3>Express Same-Day</h3><p>Pakaian selesai di hari yang sama. Tidak perlu menunggu berhari-hari untuk tampil rapi.</p></div>
+      <div class="unggulan-item"><div class="icon">🛡️</div><h3>Terpercaya &amp; Aman</h3><p>Setiap pakaian ditangani dengan hati-hati. Kami bertanggung jawab penuh atas keamanan pakaian Anda.</p></div>
+      <div class="unggulan-item"><div class="icon">🚗</div><h3>Antar-Jemput</h3><p>Kami yang datang ke Anda. Layanan pick-up dan delivery ke seluruh area Jakarta Selatan.</p></div>
+      <div class="unggulan-item"><div class="icon">👔</div><h3>Ahli Pakaian Premium</h3><p>Jas, gaun, batik, dan bahan halus ditangani dengan standar dry cleaning profesional.</p></div>
+      <div class="unggulan-item"><div class="icon">✨</div><h3>Hasil Higienis</h3><p>Deterjen premium ramah kain, proses bersih, dan packaging rapi. Pakaian terasa baru kembali.</p></div>
+      <div class="unggulan-item"><div class="icon">📱</div><h3>Pesan Online Mudah</h3><p>Hubungi kami via WhatsApp. Tidak perlu antri, tidak perlu keluar rumah.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cara-pesan">
+  <div class="wrap">
+    <span class="label">Cara Memesan</span>
+    <h2 class="title">Semudah 4 Langkah</h2>
+    <p class="sub">Dari pesan hingga pakaian kembali rapi, semuanya kami urus.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h3>Pesan via WhatsApp</h3><p>Hubungi kami, pilih layanan, dan tentukan jadwal penjemputan.</p></div>
+      <div class="step"><div class="step-num">2</div><h3>Kami Jemput</h3><p>Kurir kami datang ke lokasi Anda di Jakarta Selatan sesuai jadwal.</p></div>
+      <div class="step"><div class="step-num">3</div><h3>Kami Cuci &amp; Rawat</h3><p>Pakaian diproses dengan standar profesional sesuai layanan yang Anda pilih.</p></div>
+      <div class="step"><div class="step-num">4</div><h3>Diantar Kembali</h3><p>Pakaian bersih, rapi, dan terbungkus rapi diantar langsung ke pintu Anda.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <span class="label">FAQ</span>
+    <h2 class="title">Pertanyaan yang Sering Diajukan</h2>
+    <p class="sub">Belum yakin? Berikut jawaban untuk pertanyaan yang paling sering kami terima.</p>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Berapa lama proses laundry express selesai?<span class="faq-ic">+</span></button><div class="faq-a">Layanan Express Same-Day memastikan pakaian Anda selesai di hari yang sama selama pemesanan dilakukan sebelum pukul 10.00 pagi. Pesanan sore hari siap keesokan harinya.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Area mana saja yang terlayani antar-jemput?<span class="faq-ic">+</span></button><div class="faq-a">Kami melayani antar-jemput di seluruh wilayah Jakarta Selatan, termasuk Kemang, Cipete, Fatmawati, Cilandak, Kuningan, SCBD, TB Simatupang, dan sekitarnya.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Apakah pakaian saya aman?<span class="faq-ic">+</span></button><div class="faq-a">Keamanan pakaian Anda adalah prioritas utama kami. Setiap item diberi label identifikasi unik, dicuci sesuai jenis bahan, dan dikemas rapi sebelum dikembalikan.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Bagaimana cara berlangganan?<span class="faq-ic">+</span></button><div class="faq-a">Hubungi kami via WhatsApp. Tim kami akan membantu menentukan paket yang sesuai dan mengatur jadwal penjemputan rutin untuk Anda.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Bisakah mencuci pakaian formal seperti jas dan gaun?<span class="faq-ic">+</span></button><div class="faq-a">Ya! Kami memiliki layanan Dry Clean khusus untuk jas, blazer, gaun, batik, dan bahan sensitif lainnya dengan metode dry cleaning profesional.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Metode pembayaran apa yang diterima?<span class="faq-ic">+</span></button><div class="faq-a">Kami menerima transfer bank dan dompet digital (GoPay, OVO, Dana, ShopeePay). Invoice dikirim via WhatsApp setelah pakaian dikembalikan.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="wrap">
+    <h2>Siap Tampil Rapi Setiap Hari?</h2>
+    <p>Bergabung dengan pelanggan setia Simsalaclean di Jakarta Selatan. Pakaian bersih, hidup lebih mudah.</p>
+    <a href="#hero" class="btn">Berlangganan Sekarang ✦</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo simsalaclean.png" alt="Simsalaclean" />
+      <p>Laundry express profesional untuk gaya hidup urban Jakarta Selatan. Cepat, terpercaya, dan higienis.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Layanan</h4>
+      <ul>
+        <li><a href="#lay
+    <div class="footer-col">
+      <h4>Layanan</h4>
+      <ul>
+        <li><a href="#layanan">Cuci Kiloan</a></li>
+        <li><a href="#layanan">Express Same-Day</a></li>
+        <li><a href="#layanan">Dry Clean Pakaian Khusus</a></li>
+        <li><a href="#layanan">Perawatan Khusus</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navigasi</h4>
+      <ul>
+        <li><a href="#hero">Beranda</a></li>
+        <li><a href="#keunggulan">Keunggulan</a></li>
+        <li><a href="#cara-pesan">Cara Pesan</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontak</h4>
+      <ul>
+        <li><a href="https://wa.me/" target="_blank" rel="noopener noreferrer">WhatsApp Order</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Jakarta Selatan, DKI Jakarta</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Simsalaclean &nbsp;&middot;&nbsp; <em>Secepat Sihir, Sebersih Janji.</em></p>
+  </div>
+</footer>
+
+<script>
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycby3Sadig8XpD5duyuitCbts1n39vtIp5nATrSlnb2t7TL7lMmU9s2eQqGwJYcSBewGvSg/exec';
+
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  burger.setAttribute('aria-expanded', false);
+  // Highlight form jika klik tombol Berlangganan
+  if (a.classList.contains('nav-cta')) {
+    setTimeout(() => {
+      const formBox = document.querySelector('.lead-form-box');
+      formBox.style.animation = 'none';
+      formBox.offsetHeight; // reflow
+      formBox.style.animation = 'glowPulse 1s ease';
+      document.getElementById('fieldNama').focus();
+    }, 400);
+  }
+}));
+
+document.getElementById('leadForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const nama = document.getElementById('fieldNama').value.trim();
+  const ig   = document.getElementById('fieldIG').value.trim();
+  if (!nama || !ig) {
+    alert('Mohon isi nama lengkap dan username Instagram kamu.');
+    return;
+  }
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Mengirim...';
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nama: nama, instagram: ig })
+    });
+  } catch(err) {}
+  document.getElementById('popupNama').textContent = nama;
+  document.getElementById('popupOverlay').classList.add('show');
+  document.getElementById('leadForm').reset();
+  btn.disabled = false;
+  btn.textContent = 'Klaim Potongan Sekarang ✦';
+});
+
+document.getElementById('popupClose').addEventListener('click', () => {
+  document.getElementById('popupOverlay').classList.remove('show');
+});
+document.getElementById('popupOverlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('show');
+});
+
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-q').setAttribute('aria-expanded', false);
+    });
+    if (!wasOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', true);
+    }
+  });
+});
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.card,.unggulan-item,.step,.faq-item').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(20px)';
+  el.style.transition='opacity .5s ease,transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
