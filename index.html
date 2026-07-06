@@ -452,6 +452,12 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
   } catch(err) {}
   document.getElementById('popupNama').textContent = nama;
   document.getElementById('popupOverlay').classList.add('show');
+  // Kirim event lead ke GA4
+  gtag('event', 'generate_lead', {
+    event_category: 'Lead Form',
+    event_label: 'Klaim Potongan Hero',
+    value: 50000
+  });
   document.getElementById('leadForm').reset();
   btn.disabled = false;
   btn.textContent = 'Klaim Potongan Sekarang ✦';
