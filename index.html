@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Simsalaclean – Laundry Express Jakarta Selatan</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/png" href="favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
@@ -43,6 +45,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--navy);displ
 .btn-submit{width:100%;background:var(--gold);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;padding:13px;border:none;border-radius:8px;cursor:pointer;transition:background .2s,transform .15s;box-shadow:0 4px 18px rgba(212,175,55,.35);margin-top:2px}
 .btn-submit:hover{background:var(--gold2);transform:translateY(-1px)}
 .btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.pp-check{display:flex;align-items:center;gap:10px;margin:8px 0 10px}
+.pp-check input[type=checkbox]{width:16px;height:16px;flex-shrink:0;accent-color:var(--gold);cursor:pointer}
+.pp-check span{font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.4;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.pp-link{background:none;border:none;color:var(--gold2);font-size:.82rem;font-weight:600;text-decoration:underline;cursor:pointer;padding:0;font-family:'Inter',sans-serif;line-height:1}
+.pp-link:hover{color:#fff}
 .popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;align-items:center;justify-content:center;padding:20px}
 .popup-overlay.show{display:flex}
 .popup-box{background:#fff;border-radius:20px;padding:40px 32px;max-width:400px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.3);animation:popIn .35s ease}
@@ -56,6 +63,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--navy);displ
 .popup-note{font-size:.8rem!important;color:var(--muted)!important;margin-top:8px}
 .popup-close{margin-top:20px;background:var(--navy);color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;padding:11px 28px;border:none;border-radius:8px;cursor:pointer;transition:background .2s}
 .popup-close:hover{background:var(--navy2)}
+/* Privacy Policy Popup */
+.pp-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:10000;align-items:center;justify-content:center;padding:20px}
+.pp-overlay.show{display:flex}
+.pp-modal{background:#fff;border-radius:20px;width:100%;max-width:680px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 24px 72px rgba(0,0,0,.35);animation:popIn .35s ease;overflow:hidden}
+.pp-modal-head{padding:24px 28px 18px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.pp-modal-head h2{font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:800;color:var(--navy);display:flex;align-items:center;gap:10px}
+.pp-modal-head h2 span{font-size:1.3rem}
+.pp-modal-close{background:none;border:none;cursor:pointer;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.2rem;transition:background .2s}
+.pp-modal-close:hover{background:var(--gray)}
+.pp-modal-body{overflow-y:auto;padding:24px 28px 28px;flex:1}
+.pp-modal-body .pp-date{background:var(--gray);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;font-size:.82rem;color:var(--muted);margin-bottom:24px}
+.pp-modal-body .pp-date strong{color:var(--navy)}
+.pp-modal-body h3{font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin:22px 0 8px;padding-left:12px;border-left:3px solid var(--gold)}
+.pp-modal-body h3:first-of-type{margin-top:0}
+.pp-modal-body p{font-size:.875rem;color:var(--muted);margin-bottom:10px;line-height:1.75}
+.pp-modal-body ul{font-size:.875rem;color:var(--muted);line-height:1.75;padding-left:20px;margin-bottom:10px;display:flex;flex-direction:column;gap:5px}
+.pp-modal-body ul li{list-style:disc}
+.pp-modal-foot{padding:16px 28px;border-top:1px solid #e5e7eb;display:flex;justify-content:flex-end;flex-shrink:0}
+.pp-modal-foot button{background:var(--navy);color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;padding:11px 28px;border:none;border-radius:8px;cursor:pointer;transition:background .2s}
+.pp-modal-foot button:hover{background:var(--navy2)}
 section{padding:80px 6%}
 .wrap{max-width:1140px;margin:0 auto}
 .label{display:inline-block;color:var(--gold);font-family:'Poppins',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
@@ -71,12 +98,18 @@ section{padding:80px 6%}
 .card-body p{font-size:.85rem;color:var(--muted);margin-bottom:14px;line-height:1.55}
 .price{display:inline-block;background:var(--navy);color:var(--gold2);font-family:'Poppins',sans-serif;font-weight:700;font-size:.82rem;padding:5px 13px;border-radius:20px}
 #keunggulan{background:#fff}
-.unggulan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px}
-.unggulan-item{background:var(--gray);border-radius:14px;padding:30px 24px;border-top:4px solid var(--gold);transition:box-shadow .2s}
+.unggulan-wrap{position:relative}
+.unggulan-grid{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:8px;scrollbar-width:none}
+.unggulan-grid::-webkit-scrollbar{display:none}
+.unggulan-item{background:var(--gray);border-radius:14px;padding:30px 24px;border-top:4px solid var(--gold);transition:box-shadow .2s;flex:0 0 240px;min-width:240px}
 .unggulan-item:hover{box-shadow:0 8px 28px rgba(0,0,0,.1)}
 .unggulan-item .icon{font-size:1.9rem;margin-bottom:14px}
 .unggulan-item h3{font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:7px}
 .unggulan-item p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.unggulan-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--navy);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);transition:background .2s;z-index:2}
+.unggulan-btn:hover{background:var(--gold);color:var(--navy)}
+.unggulan-btn.prev{left:-16px}
+.unggulan-btn.next{right:-16px}
 #cara-pesan{background:var(--navy)}
 #cara-pesan .label{color:var(--gold2)}
 #cara-pesan .title{color:#fff}
@@ -141,13 +174,17 @@ footer{background:var(--dark);padding:48px 6% 24px}
     <div class="hero-text">
       <span class="badge">✦ Express Same-Day · Jakarta Selatan</span>
       <h1>Kotor Hari Ini,<br/><span>Bersih Hari Ini Juga.</span></h1>
-      <p>Laundry express profesional untuk pakaian sehari-hari hingga pakaian khusus. Selesai di hari yang sama, dijemput dan diantar ke pintu Anda.</p>
+      <p>Online Laundry express profesional untuk pakaian sehari-hari hingga pakaian khusus. Selesai di hari yang sama, dijemput dan diantar ke pintu Anda.</p>
       <div class="lead-form-box">
         <div class="form-heading">🎁 Penawaran Terbatas</div>
         <div class="form-desc">Daftar sekarang dan dapatkan <strong>potongan Rp50.000</strong> untuk order pertama Anda!</div>
         <form id="leadForm" novalidate>
           <input type="text" id="fieldNama" placeholder="Nama Lengkap" autocomplete="name" required />
           <input type="text" id="fieldIG" placeholder="Username Instagram (contoh: @simsalaclean)" required />
+          <label class="pp-check">
+            <input type="checkbox" id="ppCheck" />
+            <span>Saya menyetujui <button type="button" class="pp-link" id="openPpFromForm">Privacy &amp; Policy</button></span>
+          </label>
           <button type="submit" class="btn-submit" id="submitBtn">Klaim Potongan Sekarang ✦</button>
         </form>
       </div>
@@ -268,6 +305,12 @@ footer{background:var(--dark);padding:48px 6% 24px}
       </ul>
     </div>
     <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#" id="openPrivacy" onclick="document.getElementById('ppOverlay').classList.add('show');return false;">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
       <h4>Kontak</h4>
       <ul>
         <li><a href="https://wa.me/" target="_blank" rel="noopener noreferrer">WhatsApp Order</a></li>
@@ -277,9 +320,75 @@ footer{background:var(--dark);padding:48px 6% 24px}
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 Simsalaclean &nbsp;&middot;&nbsp; <em>Secepat Sihir, Sebersih Janji.</em></p>
+    <p>&copy; 2025 Simsalaclean &nbsp;&middot;&nbsp; <em>Secepat Sihir, Sebersih Janji.</em> &nbsp;&middot;&nbsp; <a href="#" onclick="document.getElementById('ppOverlay').classList.add('show');return false;" style="color:rgba(255,255,255,.4);text-decoration:underline;">Privacy Policy</a></p>
   </div>
 </footer>
+
+<!-- Privacy Policy Popup -->
+<div class="pp-overlay" id="ppOverlay" role="dialog" aria-modal="true" aria-labelledby="ppTitle">
+  <div class="pp-modal">
+    <div class="pp-modal-head">
+      <h2><span>🔒</span> <span id="ppTitle">Privacy &amp; Policy</span></h2>
+      <button class="pp-modal-close" id="ppClose" aria-label="Tutup">&times;</button>
+    </div>
+    <div class="pp-modal-body">
+      <div class="pp-date"><strong>Berlaku sejak:</strong> 1 Januari 2025 &nbsp;&middot;&nbsp; Terakhir diperbarui: 5 Juli 2025</div>
+
+      <h3>1. Pendahuluan</h3>
+      <p>Simsalaclean beroperasi sebagai jasa laundry profesional berbasis di Jakarta Selatan. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi Anda saat menggunakan layanan kami, termasuk melalui situs web, WhatsApp, atau Instagram.</p>
+      <p>Dengan menggunakan layanan Simsalaclean, Anda menyetujui pengumpulan dan penggunaan informasi sesuai kebijakan ini.</p>
+
+      <h3>2. Informasi yang Kami Kumpulkan</h3>
+      <ul>
+        <li><strong>Nama lengkap</strong> — untuk identifikasi pesanan dan komunikasi.</li>
+        <li><strong>Nomor WhatsApp</strong> — untuk konfirmasi pesanan, penjadwalan, dan pengiriman invoice.</li>
+        <li><strong>Alamat penjemputan/pengiriman</strong> — untuk layanan antar-jemput di area Jakarta Selatan.</li>
+        <li><strong>Username Instagram</strong> — untuk pengelolaan program promo dan voucher.</li>
+        <li><strong>Data pesanan</strong> — jenis layanan, jumlah pakaian, dan catatan khusus.</li>
+      </ul>
+
+      <h3>3. Cara Kami Menggunakan Informasi</h3>
+      <ul>
+        <li>Memproses dan mengkonfirmasi pesanan laundry Anda.</li>
+        <li>Mengatur jadwal penjemputan dan pengantaran pakaian.</li>
+        <li>Mengirimkan invoice dan informasi pembayaran.</li>
+        <li>Memberikan voucher dan penawaran promo kepada pelanggan terdaftar.</li>
+        <li>Meningkatkan kualitas layanan berdasarkan masukan pelanggan.</li>
+      </ul>
+      <p>Kami <strong>tidak</strong> menggunakan informasi Anda untuk keperluan pemasaran pihak ketiga tanpa izin eksplisit Anda.</p>
+
+      <h3>4. Penyimpanan dan Keamanan Data</h3>
+      <p>Data pesanan dan informasi pelanggan disimpan secara aman di sistem internal kami. Data dari formulir situs web disimpan di Google Sheets yang hanya dapat diakses oleh tim Simsalaclean. Kami tidak menyimpan data kartu kredit atau informasi keuangan sensitif.</p>
+
+      <h3>5. Berbagi Informasi dengan Pihak Ketiga</h3>
+      <p>Simsalaclean <strong>tidak menjual, menyewakan, atau memperdagangkan</strong> data pribadi Anda. Kami hanya berbagi informasi dalam kondisi berikut:</p>
+      <ul>
+        <li>Dengan mitra kurir yang bertugas antar-jemput pakaian (sebatas nama dan alamat).</li>
+        <li>Jika diwajibkan oleh hukum atau perintah pengadilan yang berlaku di Indonesia.</li>
+      </ul>
+
+      <h3>6. Hak Anda sebagai Pelanggan</h3>
+      <ul>
+        <li><strong>Mengakses</strong> data pribadi yang kami simpan tentang Anda.</li>
+        <li><strong>Memperbaiki</strong> data yang tidak akurat atau tidak lengkap.</li>
+        <li><strong>Menghapus</strong> data pribadi Anda dari sistem kami.</li>
+        <li><strong>Menarik persetujuan</strong> penggunaan data untuk keperluan promosi kapan saja.</li>
+      </ul>
+
+      <h3>7. Cookie dan Teknologi Pelacak</h3>
+      <p>Situs web Simsalaclean tidak menggunakan cookie pelacak pihak ketiga untuk keperluan iklan. Situs kami hanya menggunakan teknologi dasar yang diperlukan agar halaman web berfungsi dengan baik.</p>
+
+      <h3>8. Perubahan Kebijakan Privasi</h3>
+      <p>Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Setiap perubahan akan diumumkan di halaman ini dengan memperbarui tanggal "Terakhir diperbarui".</p>
+
+      <h3>9. Hubungi Kami</h3>
+      <p>Jika ada pertanyaan atau permintaan terkait data Anda, silakan hubungi kami melalui WhatsApp atau Instagram <strong>@simsalaclean</strong>.</p>
+    </div>
+    <div class="pp-modal-foot">
+      <button id="ppCloseBtn">Saya Mengerti</button>
+    </div>
+  </div>
+</div>
 
 <script>
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycby3Sadig8XpD5duyuitCbts1n39vtIp5nATrSlnb2t7TL7lMmU9s2eQqGwJYcSBewGvSg/exec';
@@ -351,6 +460,16 @@ document.querySelectorAll('.faq-q').forEach(btn => {
       btn.setAttribute('aria-expanded', true);
     }
   });
+});
+
+document.getElementById('ppClose').addEventListener('click', () => {
+  document.getElementById('ppOverlay').classList.remove('show');
+});
+document.getElementById('ppCloseBtn').addEventListener('click', () => {
+  document.getElementById('ppOverlay').classList.remove('show');
+});
+document.getElementById('ppOverlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('show');
 });
 
 const obs = new IntersectionObserver(entries => {
